@@ -25,7 +25,7 @@ public class Main {
                         parser.insertParameter(line);
                     }
                 } catch (RuntimeException e) {
-                    System.err.println("Wrong file format");
+                    e.printStackTrace();
                 }
             }
         } catch (FileNotFoundException e) {
@@ -36,9 +36,12 @@ public class Main {
         }
 
         try {
-            int intValue = sections.getParameterIntValue("LEGACY_XML", "ListenTcpPort");
-            double floatingPointValue = sections.getParameterDoubleValue("NCMD", "SampleRate");
-            String stringValue = sections.getParameterStringValue("COMMON", "DiskCachePath");
+            int intValue = sections.<Integer>getParameterValue("LEGACY_XML",
+                    "ListenTcpPort", Integer.class);
+            double floatingPointValue = sections.getParameterValue("NCMD",
+                    "SampleRate", Double.class);
+            String stringValue = sections.getParameterValue("COMMON",
+                    "DiskCachePath", String.class);
             System.out.println(intValue + " " + floatingPointValue + " " + stringValue);
         } catch (ClassCastException | NoSuchElementException e) {
             e.printStackTrace();

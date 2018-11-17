@@ -20,30 +20,11 @@ public class SectionContainer {
         elements.put(section.getName(), section);
     }
 
-    public int getParameterIntValue(String sectionName, String parameterName) throws NoSuchElementException, ClassCastException {
-        Object value = getSectionParameter(sectionName, parameterName).getValue();
+    public <T> T getParameterValue(String sectionName, String parameterName, Class<T> tClass) throws ClassCastException {
         try {
-            return (int) value;
+            return tClass.cast(getSectionParameter(sectionName, parameterName).getValue());
         } catch (ClassCastException e) {
-            throw new ClassCastException("Parameter value is not int");
-        }
-    }
-
-    public double getParameterDoubleValue(String sectionName, String parameterName) throws ClassCastException {
-        Object value = getSectionParameter(sectionName, parameterName).getValue();
-        try {
-            return (double) value;
-        } catch (ClassCastException e) {
-            throw new ClassCastException("Parameter value is not double");
-        }
-    }
-
-    public String getParameterStringValue(String sectionName, String parameterName) throws ClassCastException {
-        Object value = getSectionParameter(sectionName, parameterName).getValue();
-        try {
-            return (String) value;
-        } catch (ClassCastException e) {
-            throw new ClassCastException("Parameter value is not String");
+            throw new ClassCastException("Unable to cast parameter");
         }
     }
 

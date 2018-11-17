@@ -24,14 +24,15 @@ public class IniParser {
 
 
     public void insertParameter(String line) throws IllegalArgumentException {
+        line = line.trim();
         int end = line.indexOf(";");
         if (end != 0) {
             String[] parts = line.substring(0, (end == -1 ? line.length() : end)).split("=");
+            if (parts[0].isEmpty() || parts.length < 2) {
+                throw new IllegalArgumentException("Wrong file format");
+            }
             String parameterName = parts[0].trim();
             String parameterValue = parts[1].trim();
-            if (parameterName.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
             int integerValue;
             double floatingPointValue;
             if (parameterValue.matches("-?\\d+")) {
