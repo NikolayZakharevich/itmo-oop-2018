@@ -19,12 +19,12 @@ public class Decorator extends Account {
     }
 
     @Override
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws IllegalAccountOperationException {
         if (component.getClient().getPassportNummber() == null || component.getClient().getAddress() == null) {
             if (amount <= this.maxAmountOfMoney) {
                 component.withdraw(amount);
             } else {
-                System.err.println("Недопустимая операция снятия для сомнительного клиента");
+                throw new IllegalAccountOperationException("Недопустимая операция снятия для сомнительного клиента");
             }
         }
     }
@@ -36,12 +36,12 @@ public class Decorator extends Account {
     }
 
     @Override
-    public void transfer(AccountInterface account, double amount) {
+    public void transfer(AccountInterface account, double amount) throws IllegalAccountOperationException, IllegalAccountAccessException {
         if (component.getClient().getPassportNummber() == null || component.getClient().getAddress() == null) {
             if (amount <= this.maxAmountOfMoney) {
                 component.transfer(account, amount);
             } else {
-                System.err.println("Недопустимая операция перевода для сомнительного клиента");
+                throw new IllegalAccountOperationException("Недопустимая операция снятия для сомнительного клиента");
             }
         }
 

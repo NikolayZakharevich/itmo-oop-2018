@@ -5,7 +5,7 @@ abstract class Account implements AccountInterface {
     protected Client client;
 
     @Override
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws IllegalAccountOperationException {
         if (amount <= getAmountOfMoney()) {
             changeBalance(-amount);
         }
@@ -17,9 +17,13 @@ abstract class Account implements AccountInterface {
     }
 
     @Override
-    public void transfer(AccountInterface account, double amount) {
-        withdraw(amount);
-        account.put(amount);
+    public void transfer(AccountInterface account, double amount) throws IllegalAccountAccessException, IllegalAccountOperationException {
+        if (account.getClient().equals(this.getClient()) && !account.equals(this)) {
+            withdraw(amount);
+            account.put(amount);
+        } else {
+            throw new IllegalAccountAccessException("Перевод возможен только между разными счетами одного клиента");
+        }
     }
 
     @Override

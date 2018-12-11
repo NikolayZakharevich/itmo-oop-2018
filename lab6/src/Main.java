@@ -45,5 +45,8 @@ public class Main {
         System.out.println(account2.getAmountOfMoney());
         account2.withdraw(1000);
         System.out.println(account2.getAmountOfMoney());
-      }
+        account1.transfer(account1, 1000);
+
+
+    }
 }
