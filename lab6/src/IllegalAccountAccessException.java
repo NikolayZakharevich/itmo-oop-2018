@@ -1,3 +1,3 @@
-public class IllegalAccountAccessException extends Exception {
+public class IllegalAccountAccessException extends RuntimeException {
 
 }

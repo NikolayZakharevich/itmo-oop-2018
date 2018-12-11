@@ -29,7 +29,7 @@ public class Main {
         Client nikolayZakharevich = Client.builder("Nikolay", "Zakharevich")
                 .build();
 
-        Account account1 = new CurrentAccount(100000, nikolayZakharevich,
+        Account account1 = new Deposit(100000, nikolayZakharevich,
                 LocalDate.of(2018, 10, 1), 12);
 
         Decorator decoratedAccount = new Decorator(account1, 10000);
@@ -38,6 +38,12 @@ public class Main {
         decoratedAccount.withdraw(5000);
         System.out.println(decoratedAccount.getAmountOfMoney());
 
-
-    }
+        Account account2 = new CreditAccount(100, nikolayZakharevich,
+                13, 1000);
+        System.out.println(account2.getAmountOfMoney());
+        account2.withdraw(1500);
+        System.out.println(account2.getAmountOfMoney());
+        account2.withdraw(1000);
+        System.out.println(account2.getAmountOfMoney());
+      }
 }

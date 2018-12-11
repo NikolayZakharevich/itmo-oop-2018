@@ -3,40 +3,33 @@ import java.time.temporal.ChronoUnit;
 
 public class CurrentAccount extends Account {
 
-    private double balance;
-    private double initialAmount;
-    private Client client;
+    private double amountOfMoney;
     private final double percent;
-    private LocalDate dateOfOpening;
+    private LocalDate dateOfLastUpdate;
+
+    public CurrentAccount(double initialAmount, Client client, LocalDate dateOfOpening, double percent) {
+        this.amountOfMoney = initialAmount;
+        this.client = client;
+        this.percent = percent;
+        this.dateOfLastUpdate = dateOfOpening;
+    }
+
+    @Override
+    protected double getAmountOfMoney() {
+        LocalDate currentDate = LocalDate.now();
+        long months = ChronoUnit.MONTHS.between(this.dateOfLastUpdate, currentDate);
+        amountOfMoney *= Math.pow(1 + percent / (12 * 100), months);
+        dateOfLastUpdate = currentDate;
+        return amountOfMoney;
+    }
 
     @Override
     protected void changeBalance(double amount) {
-        balance += amount;
+        amountOfMoney += amount;
     }
 
-    @Override
-    public double getAmountOfMoney() {
-        LocalDate currentDate = LocalDate.now();
-        long months = ChronoUnit.MONTHS.between(this.dateOfOpening, currentDate);
-        return initialAmount * (1 + months * percent / (12 * 100)) + balance;
-    }
-
-    public CurrentAccount(double initialAmount, Client client, LocalDate dateOfOpening, double percent) {
-        this.initialAmount = initialAmount;
-        this.client = client;
-        this.dateOfOpening = dateOfOpening;
-        this.percent = percent;
-    }
-
-    public Client getClient() {
-        return client;
-    }
 
     public double getPercent() {
         return percent;
-    }
-
-    public LocalDate getDateOfOpening() {
-        return dateOfOpening;
     }
 }
