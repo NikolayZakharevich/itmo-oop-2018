@@ -1,6 +1,9 @@
+import java.time.LocalDate;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here jsiodsfidosfmdsoifmdsofmdso
+        LocalDate date = LocalDate.now();
+        System.out.println(date);
     }
 }
