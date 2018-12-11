@@ -4,16 +4,14 @@ import java.time.temporal.ChronoUnit;
 public class CurrentAccount implements Account {
     private double amountOfMoney;
     private Client client;
-    private final double percent = 1.1;
+    private final double percent;
     private LocalDate dateOfOpening;
 
-    public CurrentAccount(double amountOfMoney, Client client, LocalDate dateOfOpening) {
+    public CurrentAccount(double amountOfMoney, Client client, LocalDate dateOfOpening, double percent) {
         this.amountOfMoney = amountOfMoney;
         this.client = client;
         this.dateOfOpening = dateOfOpening;
-    }
-
-    public CurrentAccount() {
+        this.percent = percent;
     }
 
     @Override
@@ -36,7 +34,7 @@ public class CurrentAccount implements Account {
 
     public double getAmountOfMoney() {
         LocalDate currentDate = LocalDate.now();
-        long months = ChronoUnit.MONTHS.between(currentDate, this.dateOfOpening);
+        long months = ChronoUnit.MONTHS.between(this.dateOfOpening, currentDate);
         this.amountOfMoney *= Math.pow(1 + percent / 100, months);
         return this.amountOfMoney;
 
