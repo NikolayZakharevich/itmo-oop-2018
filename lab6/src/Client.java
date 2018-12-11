@@ -1,4 +1,5 @@
 public class Client {
+<<<<<<< HEAD
 
     public static class Builder {
 
@@ -60,4 +61,6 @@ public class Client {
         return new Builder(name, surname);
     }
 
+=======
+>>>>>>> origin/master
 }
