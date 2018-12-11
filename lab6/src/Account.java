@@ -1,7 +1,23 @@
-public interface Account {
-    void withdraw(double amount);
+abstract class Account implements AccountInterface {
 
-    void put(double amount);
+    abstract protected double getAmountOfMoney();
+    abstract protected void setAmountOfMoney(double amount);
 
-    void transfer(Account account, double amount);
+    @Override
+    public void withdraw(double amount) {
+        if (amount <= getAmountOfMoney()) {
+            setAmountOfMoney(getAmountOfMoney() - amount);
+        }
+    }
+
+    @Override
+    public void put(double amount) {
+        setAmountOfMoney(getAmountOfMoney() + amount);
+    }
+
+    @Override
+    public void transfer(AccountInterface account, double amount) {
+        withdraw(amount);
+        account.put(amount);
+    }
 }

@@ -1,7 +1,9 @@
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class CurrentAccount implements Account {
+public class CurrentAccount extends Account {
+
+
     private double amountOfMoney;
     private Client client;
     private final double percent;
@@ -14,23 +16,6 @@ public class CurrentAccount implements Account {
         this.percent = percent;
     }
 
-    @Override
-    public void withdraw(double amount) {
-        if (amount <= this.amountOfMoney) {
-            this.amountOfMoney -= amount;
-        }
-    }
-
-    @Override
-    public void put(double amount) {
-        this.amountOfMoney += amount;
-    }
-
-    @Override
-    public void transfer(Account account, double amount) {
-        this.withdraw(amount);
-        account.put(amount);
-    }
 
     public double getAmountOfMoney() {
         LocalDate currentDate = LocalDate.now();
@@ -38,6 +23,11 @@ public class CurrentAccount implements Account {
         this.amountOfMoney *= Math.pow(1 + percent / 100, months);
         return this.amountOfMoney;
 
+    }
+
+    @Override
+    protected void setAmountOfMoney(double amount) {
+        this.amountOfMoney = amount;
     }
 
     public Client getClient() {
