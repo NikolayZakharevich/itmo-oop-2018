@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Client vadimKorepanov = Client.builder("Vadim", "Korepanov")
                 .withAddress("Vyazemskiy 5/7")
-                .withPassportNumber("14 88 228322").build();
+                .withPassportNumber("14 88 228322")
+                .build();
         System.out.println(vadimKorepanov.getAddress() + " " + vadimKorepanov.getPassportNummber());
 
         Account account = new CurrentAccount(100, vadimKorepanov,
@@ -17,8 +18,17 @@ public class Main {
                 LocalDate.of(2014, 1, 1), 1.1);
 
         Client nikolayZakharevich = Client.builder("Nikolay", "Zakharevich")
-                .withAddress("Vyazemskiy 5/7")
-                .withPassportNumber("BM 2202328").build();
+                .build();
+
+        Account account1 = new CurrentAccount(100000, nikolayZakharevich,
+                LocalDate.of(2018, 10, 1), 1.1);
+
+        Decorator decoratedAccount = new Decorator(account1, 10000);
+
+        decoratedAccount.withdraw(11000);
+        decoratedAccount.withdraw(5000);
+        System.out.println(decoratedAccount.getAmountOfMoney());
+
 
     }
 }

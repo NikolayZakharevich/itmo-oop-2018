@@ -5,7 +5,6 @@ public class CurrentAccount extends Account {
 
 
     private double amountOfMoney;
-    private Client client;
     private final double percent;
     private LocalDate dateOfOpening;
 
@@ -28,10 +27,6 @@ public class CurrentAccount extends Account {
     @Override
     protected void setAmountOfMoney(double amount) {
         this.amountOfMoney = amount;
-    }
-
-    public Client getClient() {
-        return client;
     }
 
     public double getPercent() {

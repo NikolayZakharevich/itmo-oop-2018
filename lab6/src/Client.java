@@ -6,9 +6,9 @@ public class Client {
         private String surname;
 
         private String address;
-        private String passportNummber;
+        private String passportNumber;
 
-        public Builder(String name, String surname) {
+        Builder(String name, String surname) {
             this.name = name;
             this.surname = surname;
         }
@@ -19,12 +19,12 @@ public class Client {
         }
 
         public Builder withPassportNumber(String passportNumber) {
-            this.passportNummber = passportNumber;
+            this.passportNumber = passportNumber;
             return this;
         }
 
         public Client build() {
-            return new Client(name, surname, address, passportNummber);
+            return new Client(name, surname, address, passportNumber);
         }
     }
 
@@ -33,11 +33,11 @@ public class Client {
     private final String address;
     private final String passportNummber;
 
-    public Client(String name, String surname, String address, String passportNummber) {
+    Client(String name, String surname, String address, String passportNumber) {
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.passportNummber = passportNummber;
+        this.passportNummber = passportNumber;
     }
 
     public String getName() {

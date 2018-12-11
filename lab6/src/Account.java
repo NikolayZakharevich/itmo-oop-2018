@@ -2,6 +2,7 @@ abstract class Account implements AccountInterface {
 
     abstract protected double getAmountOfMoney();
     abstract protected void setAmountOfMoney(double amount);
+    protected Client client;
 
     @Override
     public void withdraw(double amount) {
@@ -19,5 +20,10 @@ abstract class Account implements AccountInterface {
     public void transfer(AccountInterface account, double amount) {
         withdraw(amount);
         account.put(amount);
+    }
+
+    @Override
+    public Client getClient() {
+        return client;
     }
 }
