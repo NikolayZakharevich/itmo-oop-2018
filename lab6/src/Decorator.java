@@ -14,8 +14,8 @@ public class Decorator extends Account {
     }
 
     @Override
-    protected void setAmountOfMoney(double amount) {
-        component.setAmountOfMoney(amount);
+    protected void changeBalance(double amount) {
+        component.changeBalance(amount);
     }
 
     @Override

@@ -10,18 +10,27 @@ public class Main {
         System.out.println(vadimKorepanov.getAddress() + " " + vadimKorepanov.getPassportNummber());
 
         Account account = new CurrentAccount(100, vadimKorepanov,
-                LocalDate.of(2014, 1, 1), 1.1);
-        System.out.println(((CurrentAccount) account).getAmountOfMoney());
-        System.out.println(((CurrentAccount) account).getClient().getName());
+                LocalDate.of(2014, 1, 1), 11);
 
-        Account newAccount = new CurrentAccount(100, vadimKorepanov,
-                LocalDate.of(2014, 1, 1), 1.1);
+        Account newAccount = new CurrentAccount(200, vadimKorepanov,
+                LocalDate.of(2018, 12, 11), 12);
+
+        System.out.println(account.getAmountOfMoney());
+        account.transfer(newAccount, 100);
+        System.out.println(account.getAmountOfMoney());
+        account.put(10);
+        System.out.println(account.getAmountOfMoney());
+        account.withdraw(20);
+        System.out.println(account.getAmountOfMoney());
+
+        System.out.println("old account - " + ((CurrentAccount) account).getAmountOfMoney());
+        System.out.println("new account - " + ((CurrentAccount) newAccount).getAmountOfMoney());
 
         Client nikolayZakharevich = Client.builder("Nikolay", "Zakharevich")
                 .build();
 
         Account account1 = new CurrentAccount(100000, nikolayZakharevich,
-                LocalDate.of(2018, 10, 1), 1.1);
+                LocalDate.of(2018, 10, 1), 12);
 
         Decorator decoratedAccount = new Decorator(account1, 10000);
 
