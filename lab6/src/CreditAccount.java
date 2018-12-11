@@ -3,7 +3,6 @@ import java.time.LocalDate;
 public class CreditAccount extends Account {
 
     private double amountOfMoney;
-    private double commissionProcent;
     private double limitOfNegativeAmountOfMoney;
 
     public CreditAccount(double amountOfMoney, Client client, double commissionProcent, double limitOfNegativeAmountOfMoney) {
@@ -29,8 +28,12 @@ public class CreditAccount extends Account {
             throw new CreditLimitException("Client " + client.getName() + " has reached credit limit");
         }
         if (amount < 0) {
-            amountOfMoney -= amountOfMoney * commissionProcent / 100;
+            amountOfMoney -= amount * commissionProcent / 100;
         }
         amountOfMoney += amount;
+    }
+
+    public double getCommissionProcent() {
+        return commissionProcent;
     }
 }

@@ -32,4 +32,8 @@ public class CurrentAccount extends Account {
     public double getPercent() {
         return percent;
     }
+
+    public double getCommissionProcent() {
+        return commissionProcent;
+    }
 }

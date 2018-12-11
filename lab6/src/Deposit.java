@@ -34,4 +34,8 @@ public class Deposit extends Account {
     public LocalDate getDateOfOpening() {
         return dateOfOpening;
     }
+
+    public double getCommissionProcent() {
+        return commissionProcent;
+    }
 }

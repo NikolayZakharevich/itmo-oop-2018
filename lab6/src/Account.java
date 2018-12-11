@@ -3,6 +3,13 @@ abstract class Account implements AccountInterface {
     abstract protected double getAmountOfMoney();
     abstract protected void changeBalance(double amount);
     protected Client client;
+    protected double commissionProcent;
+    protected Account nextAccount;
+
+    public Account setNext(Account account) {
+        nextAccount = account;
+        return account;
+    }
 
     @Override
     public void withdraw(double amount) throws IllegalAccountOperationException {
@@ -30,4 +37,13 @@ abstract class Account implements AccountInterface {
     public Client getClient() {
         return client;
     }
+
+    public void printMoneyFromAllAccounts() {
+        System.out.println(this.getAmountOfMoney());
+        if (this.nextAccount != null) {
+            this.nextAccount.printMoneyFromAllAccounts();
+        }
+    }
+
+
 }
