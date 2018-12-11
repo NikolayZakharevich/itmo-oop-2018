@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8509194e-1d0d-4686-bf47-849feddbe317" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lab6/src/Decorator.java" />
-      <change beforePath="$PROJECT_DIR$/lab6/src/Account.java" afterPath="$PROJECT_DIR$/lab6/src/Account.java" />
-      <change beforePath="$PROJECT_DIR$/lab6/src/AccountInterface.java" afterPath="$PROJECT_DIR$/lab6/src/AccountInterface.java" />
-      <change beforePath="$PROJECT_DIR$/lab6/src/Client.java" afterPath="$PROJECT_DIR$/lab6/src/Client.java" />
-      <change beforePath="$PROJECT_DIR$/lab6/src/CurrentAccount.java" afterPath="$PROJECT_DIR$/lab6/src/CurrentAccount.java" />
-      <change beforePath="$PROJECT_DIR$/lab6/src/Main.java" afterPath="$PROJECT_DIR$/lab6/src/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -455,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544544229043</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Decorator added">
+      <created>1544549925527</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1544549925527</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -523,7 +522,8 @@
     <MESSAGE value="check" />
     <MESSAGE value="check1111" />
     <MESSAGE value="CurrentAccount and Account added" />
-    <option name="LAST_COMMIT_MESSAGE" value="CurrentAccount and Account added" />
+    <MESSAGE value="Decorator added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Decorator added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
